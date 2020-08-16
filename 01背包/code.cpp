@@ -8,7 +8,7 @@ int beg01(vector<int>weight,vector<int>value,int carrweigh);
 
 int main()
 {
-    vector<int>weight{0,2,3,4,5,9};
+    vector<int>weight{0,2,3,4,5,9}; 
     vector<int>value{0,3,4,5,6,10};
     int carrweigh=20;
     int result;
