@@ -24,7 +24,7 @@ int beg01(vector<int>weight,vector<int>value,int carrweigh)
 {
     int nums=weight.size();
     weight.insert(weight.begin(),0);
-    value.insert(value.begin(),0);              //«∞√Ê—π¡„£ª
+    value.insert(value.begin(),0);             
     vector<vector<int>> F(nums+1,vector<int>(carrweigh+1,0));
     for(int i=1;i<nums+1;i++)
     {
@@ -45,5 +45,6 @@ int beg01(vector<int>weight,vector<int>value,int carrweigh)
     }
     return F[nums][carrweigh];
 }
+
 
 
