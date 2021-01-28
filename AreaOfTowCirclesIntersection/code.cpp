@@ -1,3 +1,5 @@
+
+//我的这种解法思路应该是没问题的只是long double都爆掉了，无能为力。
 #include<bits/stdc++.h>
 #include<algorithm>
 #include<cmath>
