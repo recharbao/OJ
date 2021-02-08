@@ -1,4 +1,4 @@
-// this pretest is so weak
+// 注意 non-integer
 
 #include<bits/stdc++.h>
 #include<vector>
