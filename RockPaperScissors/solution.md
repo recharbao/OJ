@@ -19,3 +19,4 @@ a3 and b3
 MAX = min(a1,b2) + min(a2,b3) + min(a3,b1)
 
 这是显然的.
+ 
