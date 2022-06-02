@@ -1,0 +1,111 @@
+#include<bits/stdc++.h>
+#include<map>
+#include<set>
+#include<string.h>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+
+//Written by Coffee. 判断素数
+bool isPrime(int num)
+{
+	if (num == 2 || num == 3)
+		return true;
+	
+    if (num % 6 != 1 && num % 6 != 5)
+		return false;
+	
+    for (int i = 5; i*i <= num; i += 6){
+		if (num % i == 0 || num % (i+2) == 0)
+			return false;
+	}
+	return true;
+}
+
+
+
+
+// int main()
+// {
+//     int n;
+//     cin >> n;
+
+//     vector<int> primeNums;
+//     for(int i = 2; i <= n; i++) {
+//         if(isPrime(i) && isPrime(i + 2)) {
+//             primeNums.push_back(i);
+//             primeNums.push_back(i + 2);
+//         }
+//     }
+
+
+//     for(int i = 0; i < primeNums.size(); i += 2) {
+//         cout << primeNums[i] << "     " << primeNums[i + 1] <<  "      distance : " << (i >= 2 ? (primeNums[i] - primeNums[i - 2]) : 0) << endl;
+//     }
+
+//     return 0;
+// }
+
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    vector<int> primeNums;
+    vector<int> nums(n + 1, 0);
+    for(int i = 2; i <= n/2; i++) {
+        if(isPrime(i)) {
+            primeNums.push_back(i);
+        }
+    }
+
+
+    // cout << "nums.size() = " << nums.size() << endl;
+    // for(int i = 0; i < primeNums.size(); i++) {
+    //     cout << primeNums[i] << endl;
+    // }
+
+
+    vector<vector<int> > res;
+    int tolCount = 0;
+    for(int i = primeNums.size() - 1; i >= 0; i--) {
+        
+        int primeNum = primeNums[i];
+        int count = 0;
+        vector<int> tmp;
+        for(int j = primeNum; j <= n; j += primeNum) {
+            // cout << "j = " << j <<"  count = " << count << endl;
+            if(!nums[j]) {
+                count++;
+                nums[j] = 1;
+                tmp.push_back(j);
+            }
+        }
+        
+        if(count % 2 == 1) {
+            nums[2 * primeNum] = 0;
+            count--;
+            for(int j = 0; j < tmp.size(); j++) {
+                if(tmp[j] == 2 * primeNum) {
+                    tmp.erase(tmp.begin() + j);
+                    break;
+                }
+            }
+        }
+
+        tolCount += count;
+
+        res.push_back(tmp);
+    }
+
+    cout << tolCount / 2 << endl;
+    for(int i = 0; i < res.size(); i++) {
+        for(int j = 0; j < res[i].size(); j += 2) {
+            cout << res[i][j] << " " << res[i][j + 1] << endl;
+        }
+    }
+
+    return 0;
+}
